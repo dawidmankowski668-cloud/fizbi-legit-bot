@@ -1,3 +1,6 @@
+Kliknij na "legit.js" (w folderze commands)
+Kliknij ołówek ✏️
+Usuń wszystko i wklej to:
 const {
     SlashCommandBuilder,
     EmbedBuilder,
@@ -8,7 +11,7 @@ const {
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('legit')
+        .setName('lc')
         .setDescription('Utworz legit check dla transakcji')
         .addUserOption(option =>
             option.setName('kupujacy').setDescription('Wybierz kupujacego').setRequired(true)
