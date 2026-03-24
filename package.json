@@ -1,0 +1,23 @@
+
+Dodaj package.json na GitHub:
+Na stronie repo kliknij przycisk "Add file" (prawy górny róg)
+
+Wybierz "Create new file"
+
+W polu "Name your file" wpisz: package.json
+
+W duże pole poniżej wklej to:
+
+{
+  "name": "fizbi-legit-check-bot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "deploy": "node deploy-commands.js"
+  },
+  "dependencies": {
+    "discord.js": "^14.14.1",
+    "dotenv": "^16.3.1"
+  }
+}
