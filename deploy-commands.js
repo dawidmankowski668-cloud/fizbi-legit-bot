@@ -1,3 +1,5 @@
+Na GitHub edytuj "deploy-commands.js" (zamień wszystko):
+
 require('dotenv').config();
 const { REST, Routes } = require('discord.js');
 const fs = require('fs');
@@ -19,18 +21,22 @@ const rest = new REST({ version: '10' }).setToken(process.env.DISCORD_TOKEN);
 
 (async () => {
     try {
-        console.log(`Rozpoczynam rejestracje ${commands.length} komend...`);
-
         const appInfo = await rest.get(Routes.oauth2CurrentApplication());
         const clientId = appInfo.id;
 
+        // Usun stare komendy
+        console.log('Usuwam stare komendy...');
+        await rest.put(Routes.applicationCommands(clientId), { body: [] });
+        
+        // Zarejestruj nowe
+        console.log('Rejestruje nowe komendy...');
         const data = await rest.put(
             Routes.applicationCommands(clientId),
             { body: commands },
         );
 
-        console.log(`Pomyslnie zarejestrowano ${data.length} komend globalnie!`);
+        console.log(`Zarejestrowano ${data.length} komend!`);
     } catch (error) {
-        console.error('Blad podczas rejestracji komend:', error);
+        console.error('Blad:', error);
     }
 })();
